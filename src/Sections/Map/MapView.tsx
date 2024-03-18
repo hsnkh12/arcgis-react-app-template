@@ -5,6 +5,9 @@ import Locate from "@arcgis/core/widgets/Locate";
 import Search from "@arcgis/core/widgets/Search";
 import CustomWidget from "../../Components/Widgets/CustomWidget";
 import ReactDOM from "react-dom";
+import Expand from "@arcgis/core/widgets/Expand";
+import Legend from "@arcgis/core/widgets/Legend";
+import LayerList from "@arcgis/core/widgets/LayerList";
 
 const MapViewSection = (props: any) => {
   const { mapView, setMapView } = props;
@@ -43,6 +46,12 @@ const MapViewSection = (props: any) => {
     const search = new Search({
       view,
     });
+    const legend = new Legend({
+      view,
+    });
+    const layerList = new LayerList({
+      view,
+    });
 
     const customWidgetElement = document.createElement("div");
     ReactDOM.render(<CustomWidget mapView={view} />, customWidgetElement);
@@ -50,6 +59,15 @@ const MapViewSection = (props: any) => {
     view.ui.add(customWidgetElement, "top-right");
     view.ui.add(locateWidget, "top-left");
     view.ui.add(search, "top-right");
+    view.ui.add(
+      new Expand({ view,content: legend, expandTooltip: "Expand Legend" }),
+      "bottom-left"
+    );
+    view.ui.add(
+      new Expand({ view,content: layerList, expandTooltip: "Expand LayerList" }),
+      "top-left"
+    );
+    
     setMapView(view);
   };
 
