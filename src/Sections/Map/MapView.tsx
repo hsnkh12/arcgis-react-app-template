@@ -3,12 +3,14 @@ import Map from "@arcgis/core/Map";
 import MapView from "@arcgis/core/views/MapView";
 import Locate from "@arcgis/core/widgets/Locate";
 import Search from "@arcgis/core/widgets/Search";
+import CustomWidget from "../../Components/Widgets/CustomWidget";
+import ReactDOM from "react-dom";
 
 const MapViewSection = (props: any) => {
   const { mapView, setMapView } = props;
   const mapRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
+  const initMap = () => {
     if (!mapRef.current) return;
 
     const webMap = new Map({
@@ -35,12 +37,20 @@ const MapViewSection = (props: any) => {
       view,
     });
 
+    const customWidgetElement = document.createElement("div");
+    ReactDOM.render(<CustomWidget mapView={view} />, customWidgetElement);
+
+    view.ui.add(customWidgetElement, "top-right");
     view.ui.add(locateWidget, "top-left");
     view.ui.add(search, "top-right");
     setMapView(view);
+  };
+
+  useEffect(() => {
+    initMap();
 
     return () => {
-      view && view.destroy();
+      mapView && mapView.destroy();
     };
   }, []);
 
