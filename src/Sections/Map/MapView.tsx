@@ -17,11 +17,18 @@ const MapViewSection = (props: any) => {
       basemap: "topo-vector",
     });
 
-    const viewInfo = {
+    const viewInfo: __esri.MapViewProperties  = {
       container: mapRef.current,
       map: webMap,
       center: [39, 34],
       zoom: 5,
+      popup: {
+        dockEnabled: true,
+        dockOptions: {
+          position: "top-right",
+          breakpoint: false,
+        },
+      },
     };
 
     const view = new MapView(viewInfo);
