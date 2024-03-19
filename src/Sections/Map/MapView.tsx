@@ -83,7 +83,7 @@ const MapViewSection = (props: any) => {
         style={{ height: "100vh", width: "100%" }}
       ></div>
       <div id="custom-widget">
-        <CustomWidget mapView={view} />
+        <CustomWidget mapView={mapView} />
       </div>
     </div>
   );
