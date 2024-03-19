@@ -4,7 +4,6 @@ import MapView from "@arcgis/core/views/MapView";
 import Locate from "@arcgis/core/widgets/Locate";
 import Search from "@arcgis/core/widgets/Search";
 import CustomWidget from "../../Components/Widgets/CustomWidget";
-import ReactDOM from "react-dom";
 import Expand from "@arcgis/core/widgets/Expand";
 import Legend from "@arcgis/core/widgets/Legend";
 import LayerList from "@arcgis/core/widgets/LayerList";
@@ -53,10 +52,7 @@ const MapViewSection = (props: any) => {
       view,
     });
 
-    const customWidgetElement = document.createElement("div");
-    ReactDOM.render(<CustomWidget mapView={view} />, customWidgetElement);
-
-    view.ui.add(customWidgetElement, "top-right");
+    view.ui.add(document.getElementById("custom-widget")!, "top-right");
     view.ui.add(locateWidget, "top-left");
     view.ui.add(search, "top-right");
     view.ui.add(
@@ -80,11 +76,16 @@ const MapViewSection = (props: any) => {
   }, []);
 
   return (
-    <div
-      className="mapDiv col-span-5"
-      ref={mapRef}
-      style={{ height: "100vh", width: "100%" }}
-    ></div>
+    <div>
+      <div
+        className="mapDiv col-span-5"
+        ref={mapRef}
+        style={{ height: "100vh", width: "100%" }}
+      ></div>
+      <div id="custom-widget">
+        <CustomWidget mapView={view} />
+      </div>
+    </div>
   );
 };
 
