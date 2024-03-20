@@ -1,5 +1,6 @@
 # Getting Started with React and ArcGIS Javascript SDK
-A starter template to build arcGIS application using ReactJS and javascript SDK
+A starter template to build arcGIS application using ReactJS and javascript SDK.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
