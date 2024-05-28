@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MapViewSection from "../../Sections/Map/MapView";
 import SceneView from "@arcgis/core/views/SceneView";
 import MapView from "@arcgis/core/views/MapView";
+import { useToast } from "../../Contexts/ToastContext";
 
 const MapScreen = () => {
-  const [mapView, setMapView] = useState<MapView | SceneView>();
   return (
     <div>
-      <MapViewSection mapView={mapView} setMapView={setMapView} />
+      <MapViewSection  />
     </div>
   );
 };

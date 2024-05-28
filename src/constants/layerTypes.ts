@@ -1,0 +1,5 @@
+export const LAYER_TYPES = {
+  TILE: "TILE",
+  VECTOR_TILE: "VECTOR-TILE",
+  MAP_IMAGE: "MAP-IMAGE",
+};
