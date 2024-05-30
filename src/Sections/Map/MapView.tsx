@@ -14,13 +14,16 @@ const MapViewSection = (props: any) => {
   const { map, view, mapLoading, loadMapErrors, mapViewRef } = useMapContext();
   
 
+  useEffect(() => {
+    view?.ui.remove("zoom")
+  },[view])
   return (
     <div>
       {mapLoading && <FullScreenLoading />}
       <div
-        className="map-view-main col-span-5"
+        className="map-view-main"
         ref={mapViewRef}
-        style={{ height: "100vh", width: "100%" }}
+        style={{position: 'fixed', height: "102vh", width: "100%", zIndex: 0 }}
       ></div>
     </div>
   );

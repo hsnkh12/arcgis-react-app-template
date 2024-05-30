@@ -1,4 +1,7 @@
 window.env = {
+  host: {
+    virtualPath: "/"
+  },
   esri: {
     proxyRules: [
       {
@@ -19,20 +22,36 @@ window.env = {
       },
     ],
     map: {
-      baseLayers: [
-        {
-          id: "base-layer-topo-vector",
-          title: "Topo Vector Layer",
-          type: "VECTOR-TILE",
-          url: "https://www.arcgis.com/sharing/rest/content/items/8a2cba3b0ebf4140b7c0dc5ee149549a/resources/styles/root.json",
-        },
-        {
-          id: "knpc-base-layer-satellite-map",
-          title: "KNPC Satellite Map",
-          type: "MAP-IMAGE",
-          url: "https://dev.openware.com.kw/server/rest/services/KNPCVIDS/SatelliteMap/MapServer",
-        },
-      ],
+      baseLayers: {
+        light: [
+          {
+            id: "base-layer-topo-vector",
+            title: "Topo Vector Layer",
+            type: "VECTOR-TILE",
+            url: "https://www.arcgis.com/sharing/rest/content/items/8a2cba3b0ebf4140b7c0dc5ee149549a/resources/styles/root.json",
+          },
+          {
+            id: "knpc-base-layer-satellite-map",
+            title: "KNPC Satellite Map",
+            type: "MAP-IMAGE",
+            url: "https://dev.openware.com.kw/server/rest/services/KNPCVIDS/SatelliteMap/MapServer",
+          },
+        ],
+        dark: [
+          {
+            id: "base-layer-topo-vector",
+            title: "Topo Vector Layer",
+            type: "VECTOR-TILE",
+            url: "https://www.arcgis.com/sharing/rest/content/items/c11ce4f7801740b2905eb03ddc963ac8/resources/styles/root.json",
+          },
+          {
+            id: "knpc-base-layer-satellite-map",
+            title: "KNPC Satellite Map",
+            type: "MAP-IMAGE",
+            url: "https://dev.openware.com.kw/server/rest/services/KNPCVIDS/SatelliteMap/MapServer",
+          },
+        ],
+      },
       operationalLayers: [
         // {
         //   id: "knpc-maa-map",

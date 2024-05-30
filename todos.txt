@@ -1,0 +1,3 @@
+- themeing 
+- translation 
+- customize widgets

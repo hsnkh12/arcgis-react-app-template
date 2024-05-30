@@ -9,10 +9,14 @@ interface ILayer {
 }
 
 interface IUseMapProps {
-  baseLayers: ILayer[];
+  baseLayers: {
+    dark: ILayer[];
+    light: ILayer[];
+  };
   operationalLayers: ILayer[];
   viewProps: any;
   mapViewRef: any;
+  colorTheme: string;
 }
 
 interface IMapContext {

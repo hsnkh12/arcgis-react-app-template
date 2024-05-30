@@ -5,9 +5,11 @@ import MapView from "@arcgis/core/views/MapView";
 import { createLayer } from "../helpers/mapHelpers";
 import Basemap from "@arcgis/core/Basemap";
 import Layer from "@arcgis/core/layers/Layer";
+import { useColorTheme } from "../Contexts/ColorThemeContext";
 
 const useMap = (props: IUseMapProps) => {
-  const { baseLayers, operationalLayers, viewProps, mapViewRef } = props;
+  const { baseLayers, operationalLayers, viewProps, mapViewRef, colorTheme } =
+    props;
   const [map, setMap] = useState<Map | null>(null);
   const [view, setView] = useState<MapView | null>(null);
   const [mapLoading, setMapLoading] = useState(true);
@@ -73,7 +75,7 @@ const useMap = (props: IUseMapProps) => {
 
     try {
       const _baseLayers = await loadLayers(
-        baseLayers,
+        baseLayers[colorTheme as keyof typeof baseLayers],
         "Failed to load base layers"
       );
       const _operationalLayers = await loadLayers(
@@ -97,6 +99,7 @@ const useMap = (props: IUseMapProps) => {
     initMapView,
     handleErrors,
     mapViewRef,
+    colorTheme,
   ]);
 
   useEffect(() => {
@@ -105,7 +108,7 @@ const useMap = (props: IUseMapProps) => {
     return () => {
       view?.destroy();
     };
-  }, []);
+  }, [colorTheme]);
 
   return { map, view, mapLoading, loadMapErrors };
 };

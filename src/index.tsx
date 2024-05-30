@@ -4,8 +4,8 @@ import "./index.css";
 import App from "./App";
 import "@arcgis/core/assets/esri/themes/light/main.css";
 import * as urlUtils from "@arcgis/core/core/urlUtils.js";
-import "bootstrap/dist/css/bootstrap.min.css";
-
+// import "bootstrap/dist/css/bootstrap.min.css";
+import "./lib/i18n"
 declare global {
   interface Window {
     env: any;
@@ -21,6 +21,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+      <App />
   </React.StrictMode>
 );
